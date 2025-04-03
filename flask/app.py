@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, make_response
 
 app = Flask(__name__)
 
@@ -8,8 +8,11 @@ def index():
 
 @app.route('/hello')
 def hello():
-    return "Hello World"
-
+    response = make_response()
+    response.status_code = 202
+    response.headers['content-type'] = 'application/octet-stream'
+    return response
+    
 
 @app.route('/greet/<name>')
 def greet(name):
