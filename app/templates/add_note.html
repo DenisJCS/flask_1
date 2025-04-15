@@ -1,0 +1,18 @@
+<!--templates/add_note.html-->
+{% extends "base.html" %}
+
+{% block title %} Add Note - Flask Notes{% endblock title %}
+
+{% block content %}
+<h1> Add New Note</h1>
+
+<form method="POST">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <lable for="content">Content:</lable>
+    <textarea id="content" name="content" required></textarea>
+
+    <button type="submit">Save Note</button>
+</form>
+{% endblock %}

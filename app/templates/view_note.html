@@ -1,0 +1,16 @@
+<!--templates/view_note.html-->
+{% extends "base.html" %}
+
+{% block title %}{{ note.title }}{% endblcock title %}
+
+{% block content %}
+<h1>{{ note.title }}</h1>
+<p class="date">Created: {{ note.created_at }}</p>
+
+<div class="note-content">
+    <p>{{ note.content }}</p>
+</div>
+
+<a href="{{ url_for('home') }}">Back to Notes</a>
+
+{% endblcock content  %}

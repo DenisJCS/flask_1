@@ -1,0 +1,63 @@
+<!--template/base.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initital-scale=1.0">
+    <title>{% block title %}Flash Notes App{% endblock title %}</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        nav{
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+        }
+        .flash-message {
+            padding:10px;
+            margin-bottom: 20px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cd;
+            border-radius: 4px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input, form textarea, form button{
+            margin-bottom: 15px;
+            padding: 8px;
+        }
+        form textarea {
+            height: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('add_not')}}">Add Note</a>
+    </nav>
+    {% with message = get_flashed_messages() %}
+        {% if message %}
+            <div class = "flash-message">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{message}}</li>
+                    {% endfor %}
+                </ul> 
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>   
+</html>
