@@ -5,12 +5,15 @@
 
 {% block content %}
 <h1>{{ note.title }}</h1>
-<p class="date">Created: {{ note.created_at }}</p>
+<p class="date">Created: {{ note.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
 
 <div class="note-content">
     <p>{{ note.content }}</p>
 </div>
 
+<div class="actions">
+    <a href="{{url_for('edit_html', note_id=note.id)}}" class="btn">Edit Note</a>
+    <form method="POST" action="{{url_for()}}"
 <a href="{{ url_for('home') }}">Back to Notes</a>
 
 {% endblcock content  %}
